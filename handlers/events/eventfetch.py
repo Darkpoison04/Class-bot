@@ -8,15 +8,7 @@ def event_fetcher(creds):
         service = build("calendar", "v3", credentials=creds)
         now = datetime.datetime.utcnow().isoformat() + "Z"
         events_result = (
-            service.events()
-            .list(
-                calendarId="primary",
-                timeMin=now,
-                maxResults=10,
-                singleEvents=True,
-                orderBy="startTime",
-            )
-            .execute()
+            service.events().list(calendarId="primary",timeMin=now,maxResults=10,singleEvents=True,orderBy="startTime",).execute()
         )
         consoledisplay.console_disp(events_result)
 
